@@ -1,0 +1,78 @@
+== Physical Plan ==
+AdaptiveSparkPlan (12)
++- TakeOrderedAndProject (11)
+   +- HashAggregate (10)
+      +- Exchange (9)
+         +- HashAggregate (8)
+            +- Project (7)
+               +- BroadcastHashJoin Inner BuildRight (6)
+                  :- Filter (2)
+                  :  +- Scan parquet  (1)
+                  +- BroadcastExchange (5)
+                     +- Filter (4)
+                        +- Scan csv  (3)
+
+
+(1) Scan parquet 
+Output [2]: [PULocationID#315, fare_amount#318]
+Batched: true
+Location: InMemoryFileIndex [file:/home/mint/big_data_1/data/taxi_2m.parquet]
+PushedFilters: [IsNotNull(fare_amount), GreaterThanOrEqual(fare_amount,0.0), IsNotNull(PULocationID)]
+ReadSchema: struct<PULocationID:int,fare_amount:double>
+
+(2) Filter
+Input [2]: [PULocationID#315, fare_amount#318]
+Condition : ((isnotnull(fare_amount#318) AND (fare_amount#318 >= 0.0)) AND isnotnull(PULocationID#315))
+
+(3) Scan csv 
+Output [3]: [LocationID#345, Borough#346, Zone#347]
+Batched: false
+Location: InMemoryFileIndex [file:/home/mint/big_data_1/data/taxi_zone_lookup.csv]
+PushedFilters: [IsNotNull(LocationID)]
+ReadSchema: struct<LocationID:int,Borough:string,Zone:string>
+
+(4) Filter
+Input [3]: [LocationID#345, Borough#346, Zone#347]
+Condition : isnotnull(LocationID#345)
+
+(5) BroadcastExchange
+Input [3]: [LocationID#345, Borough#346, Zone#347]
+Arguments: HashedRelationBroadcastMode(List(cast(input[0, int, false] as bigint)),false), [plan_id=758]
+
+(6) BroadcastHashJoin
+Left keys [1]: [PULocationID#315]
+Right keys [1]: [LocationID#345]
+Join type: Inner
+Join condition: None
+
+(7) Project
+Output [3]: [fare_amount#318, Borough#346, Zone#347]
+Input [5]: [PULocationID#315, fare_amount#318, LocationID#345, Borough#346, Zone#347]
+
+(8) HashAggregate
+Input [3]: [fare_amount#318, Borough#346, Zone#347]
+Keys [2]: [Borough#346, Zone#347]
+Functions [1]: [partial_sum(fare_amount#318)]
+Aggregate Attributes [1]: [sum#377]
+Results [3]: [Borough#346, Zone#347, sum#378]
+
+(9) Exchange
+Input [3]: [Borough#346, Zone#347, sum#378]
+Arguments: hashpartitioning(Borough#346, Zone#347, 200), ENSURE_REQUIREMENTS, [plan_id=763]
+
+(10) HashAggregate
+Input [3]: [Borough#346, Zone#347, sum#378]
+Keys [2]: [Borough#346, Zone#347]
+Functions [1]: [sum(fare_amount#318)]
+Aggregate Attributes [1]: [sum(fare_amount#318)#376]
+Results [3]: [Borough#346, Zone#347, sum(fare_amount#318)#376 AS total_fare#351]
+
+(11) TakeOrderedAndProject
+Input [3]: [Borough#346, Zone#347, total_fare#351]
+Arguments: 5, [total_fare#351 DESC NULLS LAST, Zone#347 ASC NULLS FIRST], [Borough#346, Zone#347, total_fare#351]
+
+(12) AdaptiveSparkPlan
+Output [3]: [Borough#346, Zone#347, total_fare#351]
+Arguments: isFinalPlan=false
+
+

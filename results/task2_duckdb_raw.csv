@@ -1,0 +1,7 @@
+condition,run_number,time_seconds,status
+query_a,1,0.1200,OK
+query_a,2,0.1125,OK
+query_a,3,0.1257,OK
+query_b,1,0.0508,OK
+query_b,2,0.0512,OK
+query_b,3,0.0510,OK

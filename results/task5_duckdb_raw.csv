@@ -1,0 +1,6 @@
+condition,run_number,time_seconds,status
+duckdb_repeated,1,0.3372,OK
+duckdb_repeated,2,0.0067,OK
+duckdb_repeated,3,0.0098,OK
+duckdb_repeated,4,0.0081,OK
+duckdb_repeated,5,0.0094,OK
