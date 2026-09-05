@@ -1,3 +1,4 @@
+# AI-ASSISTED: A4
 """
 Task 4 - scaling experiment for MapReduce (mrjob).
 Runs mapreduce/task1.py as a subprocess for each dataset size,

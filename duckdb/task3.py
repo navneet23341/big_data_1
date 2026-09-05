@@ -1,3 +1,4 @@
+# AI-ASSISTED: A3
 import time
 import argparse
 import duckdb

@@ -1,3 +1,4 @@
+# AI-ASSISTED: A4
 """
 Builds the Task 4 scaling plot from the three raw timing CSVs.
 """

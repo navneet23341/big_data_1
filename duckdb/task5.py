@@ -1,3 +1,4 @@
+# AI-ASSISTED: A4
 """
 Task 5 - repeated work on the same data (DuckDB).
 Same connection reused for all 5 runs (§11).

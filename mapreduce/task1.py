@@ -1,3 +1,4 @@
+# AI-ASSISTED: A1
 """
 Task 1 - MapReduce (mrjob) implementation.
 

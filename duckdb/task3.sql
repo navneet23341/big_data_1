@@ -1,3 +1,4 @@
+-- AI-ASSISTED: A3
 SELECT z.Borough, z.Zone, SUM(t.fare_amount) AS total_fare
 FROM read_parquet('taxi_2m.parquet') t
 JOIN read_csv_auto('taxi_zone_lookup.csv', header = true) z

@@ -1,3 +1,4 @@
+-- AI-ASSISTED: A3
 -- Task 2, Query A: all columns
 SELECT *
 FROM read_parquet('taxi_2m.parquet')

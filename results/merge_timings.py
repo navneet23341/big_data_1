@@ -1,3 +1,4 @@
+# AI-ASSISTED: A5, A6
 """
 results/merge_timings.py
 Combines ALL raw per-task timing CSVs (Task 1-5) into results/timings.csv per §14.

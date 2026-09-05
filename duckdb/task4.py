@@ -1,3 +1,4 @@
+# AI-ASSISTED: A4
 """
 Task 4 - scaling experiment for DuckDB.
 Connection opened once, before all timed regions (§5.3).

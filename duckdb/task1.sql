@@ -1,3 +1,4 @@
+-- AI-ASSISTED: A1
 -- Task 1: aggregation by PULocationID
 SELECT
     PULocationID,

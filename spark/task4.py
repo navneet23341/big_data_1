@@ -1,3 +1,4 @@
+# AI-ASSISTED: A4
 """
 Task 4 - scaling experiment for Spark.
 SparkSession started once, before all timed regions (§5.3).

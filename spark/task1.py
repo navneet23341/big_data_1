@@ -1,3 +1,4 @@
+# AI-ASSISTED: A1
 """
 Task 1 - PySpark DataFrame implementation.
 SparkSession is created before the timed region, per §5.3.
