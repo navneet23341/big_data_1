@@ -20,9 +20,9 @@ Repository (code only, no raw data): https://github.com/navneet23341/big_data_1
 ## 2. Environment setup
 
 ```bash
-# clone or unzip the project
-git clone https://github.com/navneet23341/big_data_1.git
-cd big_data_1
+# clone the project directly into the required submission folder name
+git clone https://github.com/navneet23341/big_data_1.git A1_2023341
+cd A1_2023341
 # (or: unzip A1_2023341.zip && cd A1_2023341)
 
 # create and activate a virtual environment
@@ -43,8 +43,8 @@ pip show mrjob pyspark duckdb | grep -E "Name|Version"
 Recorded for this submission:
 - Python: `3.12.3`
 - mrjob: `0.7.4`
-- pyspark: `4.2.0`
-- duckdb: `1.5.5`
+- pyspark: *(see `results/timings.csv` — tool_version column)*
+- duckdb: *(see `results/timings.csv` — tool_version column)*
 
 ## 3. Dataset setup — do this first
 
@@ -93,7 +93,7 @@ data/taxi_2m.csv         data/taxi_2m.parquet
 
 ## 4. Running each task
 
-All commands below are run from the project root (`big_data_1/`), with the virtual environment activated. These are the exact commands used to produce the submitted results.
+All commands below are run from the project root (`A1_2023341/`), with the virtual environment activated. These are the exact commands used to produce the submitted results.
 
 ### Task 1 — one aggregation, three systems (`taxi_1m.csv`)
 
